@@ -79,7 +79,7 @@ public class MemberDAO {
 		}
 		return result;
 	}
-	
+	//컨펌 아이디 하는 거
 	public MemberVo getMember(String userid)
 	{
 		MemberVo mVo= null;
@@ -123,5 +123,49 @@ public class MemberDAO {
 		return mVo;
 		
 	}
+	public int confirmID(String userid)
+	{
+	Connection conn = null;
+	PreparedStatement pstmt = null;
+	ResultSet rs = null;
+	int result = -1;
+
+	String sql = "select pwd from membership where userid=?";
+
+	try {
+		conn = getConnection(); // DB 연결 시도
+		pstmt = conn.prepareStatement(sql);
+		pstmt.setString(1, userid);
+
+		rs = pstmt.executeQuery();
+
+		if (rs.next()) { // 조회 결과가 있으면 userid가 존재한다는 의미
+			result = 1;
+		} else {
+			// 조회한 결과가 값이 없으므로 userid가 존재하지 않음.
+			result = -1;
+		}
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			if (conn != null) {
+				conn.close();
+			}
+			if (pstmt != null) {
+				pstmt.close();
+			}
+			if (rs != null) {
+				rs.close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	return result;
+}
+
+	
 	
 }

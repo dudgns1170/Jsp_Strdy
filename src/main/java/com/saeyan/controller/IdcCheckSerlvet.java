@@ -9,17 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.saeyan.dao.MemberDAO;
+
+import oracle.net.aso.m;
+
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class IdcCheckSerlvet
  */
-@WebServlet("/Login.do")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/idCheck.do")
+public class IdcCheckSerlvet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public IdcCheckSerlvet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,9 +33,15 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		RequestDispatcher dispatcher = request.getRequestDispatcher("member/Login.jsp");
-	      dispatcher.forward(request, response);
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		String userid =request.getParameter("userid");
+		MemberDAO mDao= MemberDAO.getInstance();
+		int result = mDao.confirmID(userid);
+		request.setAttribute("userid", userid);
+		request.setAttribute("result", result);
+		RequestDispatcher dispatcher= request.getRequestDispatcher("member/idcheck.jsp");
+		dispatcher.forward(request, response);
+		
 	}
 
 	/**
@@ -39,9 +49,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-;
-		
+		doGet(request, response);
 	}
 
 }

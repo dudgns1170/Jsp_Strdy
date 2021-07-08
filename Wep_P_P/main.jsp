@@ -10,7 +10,8 @@
 <h2>회원 전용 페이지</h2>
 <form action="Logout.do">
 <table>
-<tr>안녕하세요.  $</tr>
+<tr>안녕하세요.  ${ login.user.name}$({loginUser.userid})님</tr>
+
 
 
 </caption></table>
