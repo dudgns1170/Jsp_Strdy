@@ -11,7 +11,7 @@
 <body>
 <h2>회원 가입 입력</h2>
 <br>
-<form action="join.do" method="post" name="frm">
+<form action="join.do" method="post" name="joinform">
 <table>
 <tr>
 <td>이름 </td>

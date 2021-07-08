@@ -28,3 +28,10 @@ function idCheck() {
 	var url = "idCheck.do?userid=" + document.joinform.userid.value;
 	window.open(url, "_blank_1", "toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
+
+function idok(userid)
+{
+	opener.frm.userid.value= document.frm.userid.value;
+	opener.frm.reid.value=document.frm.userid.value;
+	self.cloes();
+}
