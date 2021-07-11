@@ -130,7 +130,7 @@ public class MemberDAO {
 	ResultSet rs = null;
 	int result = -1;
 
-	String sql = "select pwd from membership where userid=?";
+	String sql = "select pwd from member where userid=?";
 
 	try {
 		conn = getConnection(); // DB 연결 시도
@@ -166,6 +166,44 @@ public class MemberDAO {
 	return result;
 }
 
-	
-	
+	public int  insertMember(MemberVo mVo)
+	{
+		Connection conn = null;
+		PreparedStatement pstmt =null;
+		ResultSet rs = null;
+		int result =0;
+		
+		String sql = "insert into member values(?, ?, ?, ?, ?, ?)";
+		try
+		{
+			conn= getConnection();
+			pstmt= conn.prepareStatement(sql);
+			pstmt.setString(1, mVo.getName());
+			pstmt.setString(2, mVo.getUserid());
+			pstmt.setString(3, mVo.getPwd());
+			pstmt.setString(4, mVo.getEmail());
+			pstmt.setString(5, mVo.getPhone());
+			pstmt.setInt(6, mVo.getAdmin());
+			
+			result =pstmt.executeUpdate();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			}
+	return result;
+	}
 }

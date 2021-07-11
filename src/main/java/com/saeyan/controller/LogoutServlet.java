@@ -1,29 +1,24 @@
 package com.saeyan.controller;
 
 import java.io.IOException;
-
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.saeyan.dao.MemberDAO;
-
-
+import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class IdcCheckSerlvet
+ * Servlet implementation class LogoutServlet
  */
-@WebServlet("/idCheck.do")
-public class IdcCheckSerlvet extends HttpServlet {
+@WebServlet("/logout.do")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public IdcCheckSerlvet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,13 +29,9 @@ public class IdcCheckSerlvet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		String userid =request.getParameter("userid");
-		MemberDAO mDao= MemberDAO.getInstance();
-		int result = mDao.confirmID(userid);
-		request.setAttribute("userid", userid);
-		request.setAttribute("result", result);
-		request.getRequestDispatcher("member/idcheck.jsp").forward(request, response);
-		
+		HttpSession session = request.getSession();
+		session.invalidate();
+		request.getRequestDispatcher("member/Login.jsp").forward(request, response);
 	}
 
 	/**

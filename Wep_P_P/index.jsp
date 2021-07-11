@@ -8,5 +8,6 @@
 </head>
 <body>
 <a href="Login.do"> 로그인 페이지이동 </a>
+<input type="button" value="modify" onclick="location.href='memberUpdate.do?userid=${loginUser.userid}'">
 </body>
 </html>

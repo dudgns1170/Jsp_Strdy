@@ -62,7 +62,7 @@ public class JoinServlet extends HttpServlet {
 		mVo.setAdmin(Integer.parseInt(admin));
 		
 		MemberDAO mDao = MemberDAO.getInstance();
-		int result = mDao.toString(mVo);
+		int result = mDao.insertMember(mVo);
 		HttpSession session = request.getSession();
 		if(result ==1)
 		{
