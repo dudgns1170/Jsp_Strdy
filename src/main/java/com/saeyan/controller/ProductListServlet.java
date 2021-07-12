@@ -1,6 +1,7 @@
 package com.saeyan.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,19 +9,21 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+import com.saeyan.dao.ProductDAO;
+import com.saeyan.dto.ProductVo;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class ProductListServlet
  */
-@WebServlet("/Login.do")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/priductlist.do")
+public class ProductListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public ProductListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,12 +33,14 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "member/login.jsp";
-		HttpSession session = request.getSession();
-		if (session.getAttribute("loginUser") != null) { // 이미지 로그인 된 사용자임
-		url = "main.jsp";
-		}
-		request.getRequestDispatcher(url).forward(request, response);
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+	ProductDAO pDao = ProductDAO.getInstance();
+	List<ProductVo> productList= pDao.selectAIIProducts();
+	request.setAttribute("productList", productList);
+	
+	RequestDispatcher dispatchar = request.getRequestDispatcher("product/productList.jsp");
+	dispatchar.forward(request, response);
+	
 	}
 
 	/**
@@ -43,9 +48,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//doGet(request, response);
-;
-		
+		doGet(request, response);
 	}
 
 }

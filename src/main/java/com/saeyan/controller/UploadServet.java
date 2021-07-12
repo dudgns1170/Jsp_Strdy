@@ -1,26 +1,25 @@
 package com.saeyan.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class UploadServet
  */
-@WebServlet("/Login.do")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/upload.do")
+public class UploadServet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LoginServlet() {
+    public UploadServet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,12 +29,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String url = "member/login.jsp";
-		HttpSession session = request.getSession();
-		if (session.getAttribute("loginUser") != null) { // 이미지 로그인 된 사용자임
-		url = "main.jsp";
-		}
-		request.getRequestDispatcher(url).forward(request, response);
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -44,8 +38,17 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//doGet(request, response);
-;
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 		
+		String savePath = "upload";
+		
+		int uploadFileSizeLimit = 5*1024*1024;
+		String encType = "UTF-8";
+		
+	
+	
 	}
 
 }
