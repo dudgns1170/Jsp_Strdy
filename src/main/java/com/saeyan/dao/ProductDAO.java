@@ -40,8 +40,8 @@ public class ProductDAO {
 				pVo.setCode(rs.getInt("code"));
 				pVo.setName(rs.getString("name"));
 				pVo.setPrice(rs.getInt("price"));
-				pVo.setPictureurl(rs.getString("setPictureurl"));
-				pVo.setDesoription(rs.getString("setDesoription"));
+				pVo.setPictureurl(rs.getString("pictureurl"));
+				pVo.setDesoription(rs.getString("desoription"));
 				list.add(pVo);
 			}
 		}catch (Exception e) {
@@ -50,7 +50,29 @@ public class ProductDAO {
 		}finally {
 			DBManger.close(conn, rs, pstmt);
 		}
+		return list;
 		
+	}
+	
+	public void insertProduct(ProductVo pVo)
+	{
+		String sql = "insert into product values(product_sep,nextval,?,?,?,?)";
+		Connection conn =null;
+		PreparedStatement pstmt = null;
+		try {
+			conn= DBManger.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, pVo.getName());
+			pstmt.setInt(2, pVo.getPrice());
+			pstmt.setString(3, pVo.getPictureurl());
+			pstmt.setString(4, pVo.getDesoription());
+			pstmt.executeUpdate();
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			DBManger.close(conn, pstmt);
+		}
 	}
 	
 

@@ -6,10 +6,10 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
-<link rel="stylesheet" href="sh.css">
+<link rel="stylesheet" href="product/sh.css">
 </head>
 <body>
-<div id="wrap" ailgn="center">
+<div id="wrap" align="center">
 <h1>상품 리스트- 관리자</h1>
 <table class="list" border="1">
 <tr>
@@ -19,14 +19,14 @@
 
 <tr>
 <th>번호</th>
-<th>이르</th>
+<th>이름</th>
 <th>가격</th>
 <th>수정</th>
 <th>삭제</th>
 
 </tr>
 
-<c:forEach var="product" items="${productList} ">
+<c:forEach var="product" items="${productList}">
 
 <tr>
 <td>${product.code}</td>

@@ -16,7 +16,7 @@ import com.saeyan.dto.ProductVo;
 /**
  * Servlet implementation class ProductListServlet
  */
-@WebServlet("/priductlist.do")
+@WebServlet("/productList.do")
 public class ProductListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

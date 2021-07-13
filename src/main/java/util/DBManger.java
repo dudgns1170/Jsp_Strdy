@@ -5,9 +5,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import javax.activation.DataSource;
 import javax.naming.Context;
 import javax.naming.InitialContext;
+import javax.sql.DataSource;
 
 public class DBManger {
 	
@@ -19,7 +19,7 @@ public class DBManger {
 			Context envContext = (Context) initContext.lookup("java:/comp/env");
 			//lookup에 기재한 내용의 객체를 찾아서 데이터 소스가 반는다
 			DataSource ds = (DataSource) envContext.lookup("jdbc/myoracle");
-			conn = ((DBManger) ds).getConnection();
+			conn =ds.getConnection();
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();

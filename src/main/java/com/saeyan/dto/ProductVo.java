@@ -6,7 +6,6 @@ public class ProductVo {
 	private Integer price;
 	private  String desoription;
 	private String pictureurl;
-	
 	public Integer getCode() {
 		return code;
 	}
@@ -37,6 +36,10 @@ public class ProductVo {
 	public void setPictureurl(String pictureurl) {
 		this.pictureurl = pictureurl;
 	}
+	@Override
+	public String toString() {
+		return "ProductVo [code=" + code + ", name=" + name + ", price=" + price + ", desoription=" + desoription
+				+ ", pictureurl=" + pictureurl + "]";
+	}
 	
-
 }

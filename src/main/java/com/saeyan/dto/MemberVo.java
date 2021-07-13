@@ -1,6 +1,7 @@
 package com.saeyan.dto;
 //회원 정보를 저장하기 위해 사용되는 
 public class MemberVo {
+	private  int code;
 	private String name;
 	private String userid;
 	private String pwd;
@@ -43,10 +44,18 @@ public class MemberVo {
 	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
+	public int getCode() {
+		return code;
+	}
+	public void setCode(int code) {
+		this.code = code;
+	}
 	@Override
 	public String toString() {
-		return "MemberVo [name=" + name + ", userid=" + userid + ", pwd=" + pwd + ", email=" + email + ", phone="
-				+ phone + ", admin=" + admin + "]";
+		return "MemberVo [code=" + code + ", name=" + name + ", userid=" + userid + ", pwd=" + pwd + ", email=" + email
+				+ ", phone=" + phone + ", admin=" + admin + "]";
 	}
+
+	
 	
 }
