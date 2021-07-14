@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -9,20 +9,20 @@
 <script type="text/javascript" src="member.js"></script>
 </head>
 <body>
-<h2>Áßº¹È®ÀÎ</h2>
+<h2>ì¤‘ë³µí™•ì¸</h2>
 <form action="idCheck.do" method="get" name="frm">
-¾ÆÀÌµğ<input type="text" name="userid" value="${ userid}">
-<input type="submit" value="Áßº¹Ã¼Å©">
+ì•„ì´ë””<input type="text" name="userid" value="${ userid}">
+<input type="submit" value="ì¤‘ë³µì²´í¬">
 <br>
 <c:if test="${ result == 1 }">
 <script type="text/javascript">
 opener.document.frm.userid.value="";
 </script>
-${userid }´Â ÀÌ¹Ì »ç¿ëÁßÀÎ ¾ÆÀÌµğ ÀÔ´Ï´Ù.
+${userid }ëŠ” ì´ë¯¸ ì‚¬ìš©ì¤‘ì¸ ì•„ì´ë”” ì…ë‹ˆë‹¤.
 </c:if>
 <c:if test="${ result == -1 }">
-${userid }´Â »ç¿ë °¡´ÉÇÑ ¾ÆÀÌµğÀÔ´Ï´Ù.
-<input type="button" value="»ç¿ë" class="cancel" onclick="idok('${userid}')">
+${userid }ëŠ” ì‚¬ìš© ê°€ëŠ¥í•œ ì•„ì´ë””ì…ë‹ˆë‹¤.
+<input type="button" value="ì‚¬ìš©" class="cancel" onclick="idok('${userid}')">
 </c:if>
 </form>
 </body>

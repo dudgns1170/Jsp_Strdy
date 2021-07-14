@@ -1,40 +1,41 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="sh.css">
+<link rel="stylesheet" href="product/sh.css">
+<script type="text/javascript" src="product.js"></script>
 </head>
 <body>
 <div id="wrap" align="center">
-<h1> »óÇ° µî·Ï ÆäÀÌÁö</h1>
+<h1> ìƒí’ˆ ë“±ë¡ íŽ˜ì´ì§€</h1>
 <form method="post" enctype="multipart/form-data" name="frm">
 
 <table>
 <tr>
-<th>»óÇ°¸í</th>
+<th>ìƒí’ˆëª…</th>
 <td> <input type="text" name="name" size=80> </td>
 </tr>
 <tr>
-<th>°¡°Ý</th>
+<th>ê°€ê²©</th>
 <td> <input type="text" name="price" > </td>
 </tr>
 <tr>
-<th>»çÁø</th>
+<th>ì‚¬ì§„</th>
 <td> <input type="file" name="pictureUrl" > <br>
-(ÁÖÀÇ»çÇ× : ÀÌ¹ÌÁö¸¦ º¯°æÇÏ°íÀÚ ÇÒ¶§¸¸ ¼±ÅÃÇÏ½Ã¿ä) </td>
+(ì£¼ì˜ì‚¬í•­ : ì´ë¯¸ì§€ë¥¼ ë³€ê²½í•˜ê³ ìž í• ë•Œë§Œ ì„ íƒí•˜ì‹œìš”) </td>
 </tr>
 <tr>
-<th>¼³¸í</th>
+<th>ì„¤ëª…</th>
 <td> <textarea cols="80" rows="10" name="description"></textarea> </td>
 </tr>
 </table>
 <br>
-<input type="submit" value="µî·Ï" onclick="return productCheck()">
-<input type="reset" value="´Ù½Ã ÀÛ¼º">
-<input type="button" value="¸ñ·Ï" onclick="location.href=productlist.do">
+<input type="submit" value="ë“±ë¡" onclick="return productCheck()">
+<input type="reset" value="ë‹¤ì‹œ ìž‘ì„±">
+<input type="button" value="ëª©ë¡" onclick="location.href='productList.do'">
 
 
 </form>

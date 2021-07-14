@@ -53,7 +53,7 @@ public class ProductDAO {
 		return list;
 		
 	}
-	
+	//인설트
 	public void insertProduct(ProductVo pVo)
 	{
 		String sql = "insert into product values(product_sep,nextval,?,?,?,?)";
@@ -75,5 +75,40 @@ public class ProductDAO {
 		}
 	}
 	
+	//상품 조회
+	public ProductVo selectProductByCode(String code) 
+	{
+	String sql = "select * from prodcut where code=?";	
+	ProductVo pVo =null;
+	try {
+		Connection conn =null;
+		PreparedStatement pstmt = null;
+		ResultSet rs= null;
+		try {
+			conn = DBManger.getConnection();
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, code);
+			rs= pstmt.executeQuery();
+			if(rs.next())
+			{
+				pVo = new ProductVo();
+				pVo.setCode(rs.getInt("code"));
+				pVo.setName(rs.getString("name"));
+				pVo.setPrice(rs.getInt("price"));
+				pVo.setPictureurl(rs.getString("pictureurl"));
+				pVo.setDesoription(rs.getString("desoription"));
+			}
+			}catch (Exception e) {
+				// TODO: handle exception
+				e.printStackTrace();
+			}finally {
+				DBManger.close(conn, rs, pstmt);
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+	return pVo;
+	}
 
 }
